@@ -3,7 +3,7 @@ import { useEffect } from 'react';
 import Table from 'react-bootstrap/Table';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate, useParams } from 'react-router-dom';
-import { DLT } from '../redux/actions/action';
+import { DLT,ADD } from '../redux/actions/action';
 
 const CardsDetails = () => {
     const [data,setData]=useState([])
@@ -21,9 +21,14 @@ const CardsDetails = () => {
         dispatch(DLT(id))
         history("/")
       }
-
      //details page delete work end
-
+    
+     //detalis page increment
+     const send=(e)=>{
+        console.log(e)
+        dispatch(ADD(e))
+  
+      }
      
 
     const getdata=useSelector((state)=> state.cartreducer.carts)
@@ -67,7 +72,7 @@ const CardsDetails = () => {
             <div className='mt-5 d-flex justify-content-between align-items-center' style={{width:100,cursor:"pointer",background:"#ddd",color:"#111"}}>
             <span style={{fontSize:24}}>-</span>
             <span style={{fontSize:24}}>{ele.qnty}</span>
-            <span style={{fontSize:24}}>+</span>
+            <span onClick={()=>send(ele)} style={{fontSize:24}}>+</span>
             </div>
             </td>
 
