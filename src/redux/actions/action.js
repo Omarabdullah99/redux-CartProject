@@ -14,3 +14,12 @@ export const DLT = (id) => {
     payloade: id,
   };
 };
+
+//details page quantiy drcirment 
+export const REMOVE = (item) => {
+  
+  return {
+    type: "RMv_ONE",
+    payloade: item,
+  };
+};

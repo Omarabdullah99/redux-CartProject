@@ -34,6 +34,24 @@ export const cartreducer = (state = INIT_STATE, action) => {
         carts:data
       }
 
+      //details page quantiy drcirment
+      case "RMv_ONE":
+      const ItemIndex_dec= state.carts.findIndex((iteam)=> iteam.id === action.payloade.id)
+      if(state.carts[ItemIndex_dec].qnty >= 1){
+        const dltitems = state.carts[ItemIndex_dec].qnty -=1
+        return {
+          ...state,
+          carts:[...state.carts]
+        }
+      }
+      else if(state.carts[ItemIndex_dec].qnty === 1){
+        const data= state.carts.filter((el)=> el.id !== action.payloade)
+      return{
+        ...state,
+        carts:data
+      }
+      }
+
     default:
       return state;
   }
