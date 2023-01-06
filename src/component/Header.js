@@ -9,8 +9,12 @@ import { NavLink } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { Table } from "react-bootstrap";
 import { DLT } from "../redux/actions/action";
+import { useEffect } from "react";
 
 const Header = () => {
+
+  const [price,setPrice]=useState(0)
+  console.log("total price is", price)
   const getdata = useSelector((state) => state.cartreducer.carts);
   console.log(getdata);
   
@@ -30,6 +34,17 @@ const Header = () => {
 
   }
 
+  //total price
+  const total=()=>{
+    let price=0;
+    getdata.map((ele,k)=>{
+      price=ele.price + price
+    })
+    setPrice(price)
+  }
+  useEffect(()=>{
+    total()
+  },[total])
   return (
     <div>
       <Navbar bg="dark" variant="dark" style={{ height: "60px" }}>
@@ -106,7 +121,7 @@ const Header = () => {
                       </>
                     );
                   })}
-                  <p> Total: 300 </p>
+                  <p> Total: {price}</p>
                 </tbody>
               </Table>
             </div>

@@ -7,6 +7,8 @@ import { DLT } from '../redux/actions/action';
 
 const CardsDetails = () => {
     const [data,setData]=useState([])
+    const [price,setPrice]=useState(0)
+    console.log("total price is",price)
     const {id}=useParams()
     // console.log("detailsid", id)
    
@@ -22,7 +24,6 @@ const CardsDetails = () => {
 
      //details page delete work end
 
-     //total price work start
      
 
     const getdata=useSelector((state)=> state.cartreducer.carts)
@@ -39,6 +40,7 @@ const CardsDetails = () => {
         compare()
     },[id])
     console.log("detailsData", data)
+    
     return (
         <div className='container mt-2'>
             <h1 className='text-center'>Item Details Page</h1>
