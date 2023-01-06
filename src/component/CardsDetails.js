@@ -1,12 +1,29 @@
 import React, { useState } from 'react';
 import { useEffect } from 'react';
 import Table from 'react-bootstrap/Table';
-import { useSelector } from 'react-redux';
-import { useParams } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import { useNavigate, useParams } from 'react-router-dom';
+import { DLT } from '../redux/actions/action';
+
 const CardsDetails = () => {
     const [data,setData]=useState([])
     const {id}=useParams()
     // console.log("detailsid", id)
+   
+
+    //details page delete work start
+    const dispatch=useDispatch()
+    const history= useNavigate()
+
+    const dlt=(id)=>{
+        dispatch(DLT(id))
+        history("/")
+      }
+
+     //details page delete work end
+
+     //total price work start
+     
 
     const getdata=useSelector((state)=> state.cartreducer.carts)
     // console.log("detealsget data", getdata)
@@ -51,7 +68,7 @@ const CardsDetails = () => {
             <td>
             <p> <strong>Rating:</strong> <span style={{background:"green",color:"#fff", padding:"2px 5px", borderRadius:"5px"}}>{ele.rating}*</span> </p>
             <p> <strong>Order Review:</strong> <span >{ele.somedata}</span> </p>
-            <p> <strong>Remove:</strong> <span ><i className='fas fa-trash' style={{color:'red',fontSize:20,cursor:'pointer'}}></i> </span> </p>
+            <p> <strong>Remove:</strong> <span ><i className='fas fa-trash' onClick={()=>dlt(ele.id)}  style={{color:'red',fontSize:20,cursor:'pointer'}}></i> </span> </p>
             </td>
 
             </tr>
