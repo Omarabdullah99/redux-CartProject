@@ -40,7 +40,7 @@ const CardsDetails = () => {
         compare()
     },[id])
     console.log("detailsData", data)
-    
+
     return (
         <div className='container mt-2'>
             <h1 className='text-center'>Item Details Page</h1>
@@ -64,7 +64,11 @@ const CardsDetails = () => {
             <p> <strong>Restaurant</strong>: {ele.rname} </p>
             <p> <strong>Price</strong>: {ele.price}</p>
             <p> <strong>Dishes</strong>: {ele.address}  </p>
-            <p> <strong>Total</strong>: 300 </p>
+            <div className='mt-5 d-flex justify-content-between align-items-center' style={{width:100,cursor:"pointer",background:"#ddd",color:"#111"}}>
+            <span style={{fontSize:24}}>-</span>
+            <span style={{fontSize:24}}>{ele.qnty}</span>
+            <span style={{fontSize:24}}>+</span>
+            </div>
             </td>
 
             <td>
